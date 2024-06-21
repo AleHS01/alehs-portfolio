@@ -7,7 +7,7 @@ const App = () => {
   const location = useLocation();
 
   return (
-    <div>
+    <div className="">
       <NavBar />
       <Routes location={location} key={location.pathname}>
         <Route index element={<Home />}></Route>

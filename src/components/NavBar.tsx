@@ -1,29 +1,50 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import ThemeSwitcher from "./ThemeSwitcher";
+
 type NavBarProps = {
   theme?: string;
 };
 
 const NavBar: FC<NavBarProps> = () => {
   return (
-    <div className="w-full bg-slate-300 p-2 pl-5">
-      <div className="logo">ALEHS</div>
-      <div className="nav-links">
-        <div className="nav-item">
-          <Link to="/">Home</Link>
+    <nav className="">
+      <div className="">
+        <div className="">
+          <Link to="/" className="">
+            ALEHS
+          </Link>
         </div>
-        <div className="nav-item">
-          <Link to="/about">About</Link>
+        <div className="">
+          <ul className="">
+            <li>
+              <Link className="" to="/">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link className="" to="/about">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link className="" to="/projects">
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link className="" to="/contact">
+                Contact
+              </Link>
+            </li>
+          </ul>
         </div>
-        <div className="nav-item">
-          <Link to="/projects">Projects</Link>
-        </div>
-        <div className="nav-item">
-          <Link to="/contact">Contact</Link>
+        <div className="">
+          <button className="">Resume</button>
+          <ThemeSwitcher />
         </div>
       </div>
-      <div className="nav-features"></div>
-    </div>
+    </nav>
   );
 };
 
