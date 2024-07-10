@@ -1,0 +1,25 @@
+.theme-toggle {
+  color: var(--accent);
+  background-color: transparent;
+}
+
+.theme-options {
+  position: absolute;
+  color: var(--accent);
+  background-color: transparent;
+  font-size: var(--font--accent);
+  margin-top: 0.2rem;
+}
+
+.theme-options hr {
+  width: 80%;
+  margin: 5px 0;
+  border-color: var(--accent);
+}
+.option,
+.theme-toggle {
+  cursor: pointer;
+}
+.option:hover {
+  color: var(--accent--hover);
+}
