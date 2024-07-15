@@ -1,5 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
+import {
+  useEffect,
+  useState,
+  useRef,
+  Dispatch,
+  FC,
+  SetStateAction,
+} from "react";
 import "../css/ThemeSwitcher.css";
 import {
   IconMoon,
@@ -8,22 +14,14 @@ import {
   IconSunFilled,
   IconPlant2,
 } from "@tabler/icons-react";
-
-const ThemeSwitcher: React.FC = () => {
+import Tooltip from "./Tooltip";
+type ThemeProps = {
+  theme: string;
+  setTheme: Dispatch<SetStateAction<string>>;
+};
+const ThemeSwitcher: FC<ThemeProps> = ({ theme, setTheme }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
-  const defaultLight = window.matchMedia(
-    "(prefers-color-scheme: light)"
-  ).matches;
-  const [theme, setTheme] = useLocalStorage<string>(
-    "portfolio.theme",
-    defaultLight ? "light" : "dark"
-  );
-
-  useEffect(() => {
-    document.documentElement.setAttribute("color-scheme", theme);
-  }, [theme]);
 
   const handleTheme = (t: string) => {
     setTheme(t.toLowerCase());
@@ -69,11 +67,17 @@ const ThemeSwitcher: React.FC = () => {
           {filteredThemes.map((t, index) => (
             <div key={index} onClick={() => handleTheme(t)} className="option">
               {t === "light" ? (
-                <IconSun />
+                <Tooltip content="Light" bgColor="rgb(99, 142, 203)">
+                  <IconSun />
+                </Tooltip>
               ) : t === "dark" ? (
-                <IconMoon />
+                <Tooltip content="Midnight" bgColor="rgb(0, 53, 84)">
+                  <IconMoon />
+                </Tooltip>
               ) : (
-                <IconPlant2 />
+                <Tooltip content="Jungle" bgColor="rgb(31, 75, 44)">
+                  <IconPlant2 />
+                </Tooltip>
               )}
             </div>
           ))}

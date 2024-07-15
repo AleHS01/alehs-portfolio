@@ -1,0 +1,22 @@
+:root {
+  --tooltip-margin: 8px;
+}
+
+.social-icons-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+}
+
+.social-icon {
+  color: var(--accent);
+  margin: 10px 0;
+}
+
+.social-icon:hover {
+  color: var(--accent--hover);
+}

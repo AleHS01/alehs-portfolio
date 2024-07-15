@@ -1,0 +1,111 @@
+/* HeroSection.css */
+.hero-section {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  width: 100%;
+  margin: 2rem auto;
+  height: 80vh;
+  position: relative;
+  /* overflow: hidden; */
+}
+
+.text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10%;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.text-container::before {
+  content: " ";
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  left: -10%;
+  top: 80%;
+  background: linear-gradient(45deg, var(--accent--hover), var(--accent));
+  animation: bigcircle 6s linear infinite;
+}
+.text-container::after {
+  content: " ";
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  left: 38%;
+  top: 8%;
+  background: linear-gradient(45deg, var(--accent--hover), var(--accent));
+  animation: smallcircle 6s linear infinite;
+}
+
+@keyframes bigcircle {
+  50% {
+    left: -12%;
+    top: 77%;
+  }
+}
+
+@keyframes smallcircle {
+  50% {
+    left: 40%;
+    top: 10%;
+  }
+  75% {
+    top: 12%;
+  }
+}
+
+.topline {
+  display: block;
+  position: relative;
+  font-size: 35px;
+  letter-spacing: 5px;
+  color: var(--accent);
+}
+
+.topline::after {
+  position: absolute;
+  content: " ";
+  height: 4px;
+  width: 35px;
+  bottom: 10px;
+  background-color: var(--accent--hover);
+}
+
+.text-container h1 {
+  display: block;
+  font-size: 6em;
+  font-weight: 900;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+.multiText {
+  color: var(--accent--hover);
+  text-transform: capitalize;
+}
+
+.text-container p {
+  display: block;
+  width: 100%;
+  font-size: 1.2em;
+  color: var(--accent);
+}
+
+.name {
+  color: var(--accent--hover);
+}
+
+/* 3D Elements */
+.element-container {
+  position: relative;
+}
+
+#container3D {
+  width: 100%;
+  height: 100%;
+}

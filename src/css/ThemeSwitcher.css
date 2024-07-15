@@ -1,6 +1,9 @@
 .theme-toggle {
   color: var(--accent);
   background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .theme-options {
@@ -9,6 +12,7 @@
   background-color: transparent;
   font-size: var(--font--accent);
   margin-top: 0.2rem;
+  z-index: 50;
 }
 
 .theme-options hr {

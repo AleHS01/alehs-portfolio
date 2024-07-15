@@ -1,19 +1,20 @@
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 import ThemeSwitcher from "./ThemeSwitcher";
 import "../css/NavBar.css";
 import { IconDownload } from "@tabler/icons-react";
 
 type NavBarProps = {
-  theme?: string;
+  theme: string;
+  setTheme: Dispatch<SetStateAction<string>>;
 };
 
-const NavBar: FC<NavBarProps> = () => {
+const NavBar: FC<NavBarProps> = ({ theme, setTheme }) => {
   return (
     <nav className="nav center">
-      <div className="">
+      <div className="logo">
         <Link to="/" className="">
-          ALEHS
+          ALEHS<b>.</b>
         </Link>
       </div>
       <ul className="nav-links">
@@ -39,7 +40,7 @@ const NavBar: FC<NavBarProps> = () => {
           <IconDownload stroke={2} size={"1.2rem"} />
           Resume
         </a>
-        <ThemeSwitcher />
+        <ThemeSwitcher theme={theme} setTheme={setTheme} />
       </div>
     </nav>
   );
