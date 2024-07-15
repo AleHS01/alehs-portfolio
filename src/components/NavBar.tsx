@@ -18,16 +18,28 @@ const NavBar: FC<NavBarProps> = ({ theme, setTheme }) => {
         </Link>
       </div>
       <ul className="nav-links">
-        <li className="nav-link">
+        <li className={`nav-link ${location.pathname === "/" ? "active" : ""}`}>
           <Link to="/">Home</Link>
         </li>
-        <li className="nav-link">
+        <li
+          className={`nav-link ${
+            location.pathname === "/about" ? "active" : ""
+          }`}
+        >
           <Link to="/about">About</Link>
         </li>
-        <li className="nav-link">
+        <li
+          className={`nav-link ${
+            location.pathname === "/projects" ? "active" : ""
+          }`}
+        >
           <Link to="/projects">Projects</Link>
         </li>
-        <li className="nav-link">
+        <li
+          className={`nav-link ${
+            location.pathname === "/contact" ? "active" : ""
+          }`}
+        >
           <Link to="/contact">Contact</Link>
         </li>
       </ul>

@@ -3,6 +3,7 @@ import {
   IconBrandLinkedin,
   IconBrandGithub,
   IconBrandYoutube,
+  IconMail,
 } from "@tabler/icons-react";
 import Tooltip from "../Tooltip";
 import "../../css/SocialIcons.css";
@@ -31,6 +32,15 @@ const SocialIcons: React.FC = () => {
       <Tooltip content="Youtube" bgColor="rgb(255,0,0)">
         <a className="social-icon" href="" target="_blank">
           <IconBrandYoutube stroke={1.5} size="1.9rem" />
+        </a>
+      </Tooltip>
+      <Tooltip content="Email" bgColor="rgb(32, 201, 151)">
+        <a
+          className="social-icon"
+          href="mailto:alejandrohernandezdev@gmail.com"
+          target="_blank"
+        >
+          <IconMail stroke={1.5} size="1.9rem" />
         </a>
       </Tooltip>
     </div>

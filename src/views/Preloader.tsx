@@ -1,9 +1,69 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../css/Preloader.css";
+import WAVES from "vanta/dist/vanta.waves.min.js";
+type PreloaderType = {
+  theme: string;
+};
 
-const Preloader: React.FC = () => {
+const Preloader: React.FC<PreloaderType> = ({ theme }) => {
+  const [vantaEffect, setVantaEffect] = useState(undefined);
+  const myRef = useRef(null);
+  const [zoom, setZoom] = useState(0.8);
+
+  const getColor = () => {
+    if (theme == "light") {
+      return "rgb(57, 88, 134)";
+    } else if (theme == "dark") {
+      return "rgb(3, 32, 48)";
+    } else {
+      return "rgb(7, 96, 66)";
+    }
+  };
+
+  useEffect(() => {
+    const incrementZoom = (targetZoom: number, duration: number) => {
+      const startZoom = zoom;
+      const increment = (targetZoom - startZoom) / ((duration / 1000) * 60);
+
+      const updateZoom = () => {
+        setZoom((prevZoom) => {
+          const newZoom = prevZoom + increment;
+          if (increment > 0 ? newZoom >= targetZoom : newZoom <= targetZoom) {
+            return targetZoom;
+          } else {
+            setTimeout(updateZoom, 1000 / 60);
+            return newZoom;
+          }
+        });
+      };
+
+      updateZoom();
+    };
+
+    if (!vantaEffect) {
+      setVantaEffect(
+        WAVES({
+          el: myRef.current,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          color: getColor(),
+          zoom: zoom,
+        })
+      );
+    }
+    incrementZoom(1.8, 1000);
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect, zoom]);
+
   return (
-    <div className="preloader center">
+    <div className="preloader center" ref={myRef}>
       <div className="name-container">
         <svg
           id="preloader-logo"

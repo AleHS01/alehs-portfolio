@@ -8,6 +8,7 @@
   padding: 0.6rem 0;
   font-size: var(--font--accent);
   z-index: 100;
+  /* position: fixed; */
 }
 
 .logo a {
@@ -22,6 +23,14 @@
 .logo b {
   color: var(--accent--hover);
   font-size: 70px;
+  position: relative;
+  transition: all 1.5s ease;
+  left: 0;
+}
+
+.logo:hover b {
+  color: var(--accent);
+  left: -100%; /* Move the dot to the left */
 }
 
 .nav-links {
@@ -30,7 +39,50 @@
   list-style: none;
   gap: 20px;
   color: var(--accent);
+  font-weight: 500;
 }
+
+.nav-link {
+  position: relative;
+  cursor: pointer;
+}
+.nav-link.active a {
+  color: var(--accent--hover);
+}
+
+.nav-link.active::after,
+.nav-link:hover::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent--hover);
+  border-radius: 50%;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.nav-link:hover::after {
+  opacity: 1;
+}
+
 .nav-btns {
   display: flex;
   flex-direction: row;

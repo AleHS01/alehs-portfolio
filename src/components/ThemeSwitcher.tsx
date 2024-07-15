@@ -2,8 +2,8 @@ import {
   useEffect,
   useState,
   useRef,
-  Dispatch,
   FC,
+  Dispatch,
   SetStateAction,
 } from "react";
 import "../css/ThemeSwitcher.css";
@@ -24,8 +24,12 @@ const ThemeSwitcher: FC<ThemeProps> = ({ theme, setTheme }) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   const handleTheme = (t: string) => {
+    setIsOpen(false);
     setTheme(t.toLowerCase());
-    setIsOpen(false); // Close the dropdown after selecting a theme
+
+    localStorage.setItem("scrollPosition", window.scrollY.toString());
+
+    location.reload();
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -33,6 +37,13 @@ const ThemeSwitcher: FC<ThemeProps> = ({ theme, setTheme }) => {
       setIsOpen(false);
     }
   };
+
+  useEffect(() => {
+    const storedScroll = localStorage.getItem("scrollPosition");
+    if (storedScroll) {
+      window.scrollTo(0, parseInt(storedScroll, 10));
+    }
+  }, []);
 
   useEffect(() => {
     if (isOpen) {

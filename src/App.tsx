@@ -25,7 +25,7 @@ const App: React.FC = () => {
   }, [theme]);
 
   if (loading) {
-    return <Preloader />;
+    return <Preloader theme={theme} />;
   }
 
   return (

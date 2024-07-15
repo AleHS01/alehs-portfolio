@@ -27,7 +27,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ theme }) => {
     });
 
     return () => {
-      // Destroy Typed instance during cleanup to stop animation
       typed.destroy();
     };
   }, []);
