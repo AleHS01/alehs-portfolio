@@ -1,10 +1,10 @@
-/* HeroSection.css */
-.hero-section {
+/* Home */
+.home-section {
   display: grid;
   grid-template-columns: 60% 40%;
   width: 100%;
   margin: 2rem auto;
-  height: 80vh;
+  height: 100%;
   position: relative;
   /* overflow: hidden; */
 }

@@ -11,7 +11,6 @@ const Object3D: React.FC<Obj3DProps> = ({ theme }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log("-theme", theme);
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -26,7 +25,7 @@ const Object3D: React.FC<Obj3DProps> = ({ theme }) => {
     let mouseY = window.innerHeight / 2;
     const objToRender: Record<string, string> = {
       light: "plane",
-      dark: "", // Assuming there is no model for the dark theme
+      dark: "",
       jungle: "greenhouse",
     };
 
@@ -51,10 +50,8 @@ const Object3D: React.FC<Obj3DProps> = ({ theme }) => {
     );
     containerRef.current?.appendChild(renderer.domElement);
 
-    camera.position.z = objToRender[theme] === "plane" ? 1.1 : 18;
-
     const topLight = new THREE.DirectionalLight(0xffffff, 1);
-    topLight.position.set(500, 500, 500);
+    topLight.position.set(100, 100, 1000);
     topLight.castShadow = true;
     scene.add(topLight);
 
@@ -69,6 +66,45 @@ const Object3D: React.FC<Obj3DProps> = ({ theme }) => {
     const animate = () => {
       requestAnimationFrame(animate);
 
+      type ConfigType = {
+        [key in Obj3DProps["theme"]]: {
+          rotationX: number;
+          rotationY: number;
+          rotationZ: number;
+          positionZ: number;
+          positionY: number;
+          positionX: number;
+        };
+      };
+
+      // Configuration based on theme
+      const config: ConfigType = {
+        light: {
+          rotationX: 0.3,
+          rotationY: -0.2,
+          rotationZ: -0.4,
+          positionZ: 1,
+          positionY: 0.15,
+          positionX: 0,
+        },
+        dark: {
+          rotationX: 0,
+          rotationY: 0,
+          rotationZ: 0,
+          positionZ: 18,
+          positionY: 0,
+          positionX: 0,
+        },
+        jungle: {
+          rotationX: 0,
+          rotationY: 0,
+          rotationZ: 0,
+          positionZ: 18,
+          positionY: 1,
+          positionX: 0,
+        },
+      };
+
       if (object) {
         // Reduce the effect of mouseX and mouseY
         const mouseXFactor = 0.03;
@@ -80,6 +116,15 @@ const Object3D: React.FC<Obj3DProps> = ({ theme }) => {
         // Limit rotation angles to avoid extreme values
         object.rotation.y = THREE.MathUtils.clamp(object.rotation.y, -0.5, 0.5);
         object.rotation.x = THREE.MathUtils.clamp(object.rotation.x, -0.3, 0.3);
+      }
+
+      if (object) {
+        object.rotation.x = config[theme].rotationX;
+        object.rotation.y = config[theme].rotationY;
+        object.rotation.z = config[theme].rotationZ;
+        camera.position.z = config[theme].positionZ;
+        camera.position.y = config[theme].positionY;
+        camera.position.x = config[theme].positionX;
       }
 
       renderer.render(scene, camera);

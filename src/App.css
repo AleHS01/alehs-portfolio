@@ -35,3 +35,76 @@ select {
 .border:hover {
   border-color: var(--accent--hover);
 }
+
+/* Animation */
+.slide-y-in,
+.slide-y-out,
+.slide-x-in,
+.slide-x-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 500;
+}
+
+.slide-y-in {
+  background-color: rgb(46, 116, 116);
+  transform-origin: top;
+}
+
+.slide-y-out {
+  background-color: rgb(46, 116, 116);
+  transform-origin: bottom;
+}
+
+.slide-x-in {
+  background-color: rgb(47, 46, 116);
+  transform-origin: left;
+}
+
+.slide-x-out {
+  background-color: rgb(47, 46, 116);
+  transform-origin: right;
+}
+
+.slide-x-in,
+.slide-x-out,
+.slide-y-in,
+.slide-y-out {
+  background: linear-gradient(
+    -45deg,
+    var(--accent),
+    var(--accent--hover),
+    #23a6d5,
+    #23d5ab
+  );
+  background-size: 400% 400%;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+body {
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

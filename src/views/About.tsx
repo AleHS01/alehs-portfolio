@@ -1,5 +1,8 @@
 import React from "react";
+import { transitionLeftRight } from "../utils/transition";
 
-export default function About() {
+const About = () => {
   return <div>About</div>;
-}
+};
+
+export default transitionLeftRight(About);

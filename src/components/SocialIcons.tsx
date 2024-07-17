@@ -5,8 +5,8 @@ import {
   IconBrandYoutube,
   IconMail,
 } from "@tabler/icons-react";
-import Tooltip from "../Tooltip";
-import "../../css/SocialIcons.css";
+import Tooltip from "./Tooltip";
+import "../css/SocialIcons.css";
 
 const SocialIcons: React.FC = () => {
   return (

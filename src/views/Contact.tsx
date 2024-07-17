@@ -1,5 +1,7 @@
 import React from "react";
+import { transitionLeftRight } from "../utils/transition";
 
-export default function Contact() {
+const Contact = () => {
   return <div>Contact</div>;
-}
+};
+export default transitionLeftRight(Contact);

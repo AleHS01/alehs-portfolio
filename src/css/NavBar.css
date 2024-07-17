@@ -30,7 +30,7 @@
 
 .logo:hover b {
   color: var(--accent);
-  left: -100%; /* Move the dot to the left */
+  left: -100%;
 }
 
 .nav-links {

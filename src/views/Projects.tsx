@@ -1,5 +1,8 @@
 import React from "react";
+import { transitionTopBottom } from "../utils/transition.tsx";
 
-export default function Projects() {
+const Projects = () => {
   return <div>Projects</div>;
-}
+};
+
+export default transitionTopBottom(Projects);
