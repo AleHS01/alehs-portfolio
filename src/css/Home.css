@@ -26,7 +26,7 @@
   width: 300px;
   border-radius: 50%;
   left: -10%;
-  top: 80%;
+  top: 100%;
   background: linear-gradient(45deg, var(--accent--hover), var(--accent));
   animation: bigcircle 6s linear infinite;
 }
@@ -45,7 +45,7 @@
 @keyframes bigcircle {
   50% {
     left: -12%;
-    top: 77%;
+    top: 97%;
   }
 }
 

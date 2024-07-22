@@ -50,7 +50,7 @@ const Home: React.FC<HomeProps> = ({ theme }) => {
         </div>
       </div>
       <div className="element-container">
-        <Object3D theme={theme} />
+        {/* <Object3D theme={theme} /> */}
       </div>
     </div>
   );
