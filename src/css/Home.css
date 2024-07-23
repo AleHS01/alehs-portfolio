@@ -3,10 +3,9 @@
   display: grid;
   grid-template-columns: 60% 40%;
   width: 100%;
-  margin: 2rem auto;
-  height: 100%;
+  height: calc(100vh - 80px);
   position: relative;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .text-container {
@@ -26,7 +25,7 @@
   width: 300px;
   border-radius: 50%;
   left: -10%;
-  top: 100%;
+  top: 80%;
   background: linear-gradient(45deg, var(--accent--hover), var(--accent));
   animation: bigcircle 6s linear infinite;
 }
@@ -45,7 +44,7 @@
 @keyframes bigcircle {
   50% {
     left: -12%;
-    top: 97%;
+    top: 77%;
   }
 }
 
