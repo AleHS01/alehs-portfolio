@@ -3,7 +3,7 @@
 A modern portfolio showcasing my skills in full-stack development, web design, and passion for building innovative web experiences.
 
 > [!NOTE]
-> This portfolio website is under development is under development.
+> This portfolio website is under development
 
 ## Tech Stack
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
